@@ -1,0 +1,123 @@
+
+:root {
+    --background-color: #f0f0f5;
+    --text-color: #333333;
+    --header-color: #007bff;
+    --container-bg: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --toggle-bg: #cccccc;
+    --toggle-handle: #ffffff;
+    --transition-duration: 0.5s; 
+}
+
+body[data-theme="dark"] {
+    --background-color: #1a1a2e;
+    --text-color: #e4e4e4;
+    --header-color: #64ffda;
+    --container-bg: #2c2c4d;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+    --toggle-bg: #555555;
+    --toggle-handle: #1a1a2e;
+}
+
+* {
+    transition: background-color var(--transition-duration), color var(--transition-duration), box-shadow var(--transition-duration);
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+    padding: 50px 20px;
+    margin: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    padding: 40px;
+    background-color: var(--container-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow-color);
+    text-align: center;
+}
+
+h1 {
+    color: var(--header-color);
+    margin-bottom: 20px;
+}
+
+.content-box {
+    margin-top: 30px;
+    padding: 20px;
+    border: 1px solid var(--text-color);
+    border-radius: 8px;
+    text-align: left;
+}
+
+.content-box h2 {
+    color: var(--header-color);
+    margin-top: 0;
+}
+
+
+#theme-toggle {
+    position: relative;
+    width: 60px;
+    height: 30px;
+    background-color: var(--toggle-bg);
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 30px;
+    padding: 0;
+}
+
+.icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: opacity var(--transition-duration);
+}
+
+.light-icon {
+    left: 8px;
+    opacity: 1;
+}
+
+.dark-icon {
+    right: 8px;
+    opacity: 0;
+}
+
+#theme-toggle::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 24px;
+    height: 24px;
+    background-color: var(--toggle-handle);
+    border-radius: 50%;
+    transition: transform var(--transition-duration);
+}
+
+
+body[data-theme="dark"] #theme-toggle::after {
+    transform: translateX(30px);
+}
+
+body[data-theme="dark"] .light-icon {
+    opacity: 0;
+}
+
+body[data-theme="dark"] .dark-icon {
+    opacity: 1;
+}
